@@ -43,6 +43,9 @@ function sanitize(old: string): string {
 }
 
 async function check(member: GuildMember) {
+  if (member.user.bot) return;
+  if (!member.bannable) return;
+
   if (
     sanitize(member.displayName).startsWith("jtrader") ||
     sanitize(member.user.displayName).startsWith("jtrader")
